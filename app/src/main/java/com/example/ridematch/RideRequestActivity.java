@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.ArrayList;
 
 public class RideRequestActivity extends AppCompatActivity {
@@ -27,18 +31,22 @@ public class RideRequestActivity extends AppCompatActivity {
             String pickup = pickupLocation.getText().toString();
             String dropoff = dropoffLocation.getText().toString();
 
-            // Simulate fetching driver data
-            ArrayList<Driver> drivers = new ArrayList<>();
-            drivers.add(new Driver("Akshay Patil", "Toyota Prius", "4.9", new LatLng(37.7749, -122.4194)));
-            drivers.add(new Driver("John Doe", "Honda Civic", "4.7", new LatLng(37.7849, -122.4094)));
-            drivers.add(new Driver("Jane Smith", "Ford Focus", "4.8", new LatLng(37.7649, -122.4294)));
-            drivers.add(new Driver("Emily Jones", "Chevrolet Malibu", "4.6", new LatLng(37.7549, -122.4394)));
-            drivers.add(new Driver("Michael Brown", "Nissan Altima", "4.5", new LatLng(37.7449, -122.4494)));
+            if (TextUtils.isEmpty(pickup) || TextUtils.isEmpty(dropoff)) {
+                Toast.makeText(RideRequestActivity.this, "Both pickup and drop-off locations are required", Toast.LENGTH_SHORT).show();
+            } else {
+                // Simulate fetching driver data
+                ArrayList<Driver> drivers = new ArrayList<>();
+                drivers.add(new Driver("Akshay Patil", "Toyota Prius", "4.9", new LatLng(37.7749, -122.4194)));
+                drivers.add(new Driver("John Doe", "Honda Civic", "4.7", new LatLng(37.7849, -122.4094)));
+                drivers.add(new Driver("Jane Smith", "Ford Focus", "4.8", new LatLng(37.7649, -122.4294)));
+                drivers.add(new Driver("Emily Jones", "Chevrolet Malibu", "4.6", new LatLng(37.7549, -122.4394)));
+                drivers.add(new Driver("Michael Brown", "Nissan Altima", "4.5", new LatLng(37.7449, -122.4494)));
 
-            // Pass data to the next activity
-            Intent intent = new Intent(RideRequestActivity.this, RideDetailsActivity.class);
-            intent.putParcelableArrayListExtra("DRIVERS_LIST", drivers);
-            startActivity(intent);
+                // Pass data to the next activity
+                Intent intent = new Intent(RideRequestActivity.this, RideDetailsActivity.class);
+                intent.putParcelableArrayListExtra("DRIVERS_LIST", drivers);
+                startActivity(intent);
+            }
         });
     }
 
@@ -62,7 +70,7 @@ public class RideRequestActivity extends AppCompatActivity {
             location = in.readParcelable(LatLng.class.getClassLoader());
         }
 
-        public static final Creator<Driver> CREATOR = new Creator<Driver>() {
+        public static final Creator<Driver> CREATOR = new Parcelable.Creator<Driver>() {
             @Override
             public Driver createFromParcel(Parcel in) {
                 return new Driver(in);
@@ -104,6 +112,8 @@ public class RideRequestActivity extends AppCompatActivity {
         }
     }
 }
+
+
 
 
 
