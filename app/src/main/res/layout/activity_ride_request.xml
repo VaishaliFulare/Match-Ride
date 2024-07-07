@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".RideRequestActivity">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/pickupLocation"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="    Pickup Location"
+        android:layout_marginBottom="25dp"
+        android:drawablePadding="10sp"
+        android:background="@drawable/edit_background"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="180dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/dropoffLocation"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:drawablePadding="10sp"
+        android:hint="     Drop-off Location"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edit_background"
+        android:textColorHint="@color/white"
+        android:layout_below="@id/pickupLocation"
+        />
+
+    <Button
+        android:id="@+id/submitRideRequestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/dropoffLocation"
+        android:layout_centerHorizontal="true"
+       />
+</RelativeLayout>

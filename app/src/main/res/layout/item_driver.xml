@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/driverName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Driver Name"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/driverCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Driver Car"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/driverRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Driver Rating"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/driverLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Driver Location"
+        android:textSize="14sp" />
+</LinearLayout>
